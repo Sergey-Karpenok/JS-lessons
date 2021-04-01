@@ -1,9 +1,4 @@
-	    let money;
-	    let income;
-	    let addExpenses;
-	    let deposit;
-	    let mission;
-	    let period;
+let money, income, addExpenses, deposit, mission, period;
 
-	    alert('Привет Александр, хорошего дня!');
-	    console.log('Hi Alexander, have a nice day!');
+alert('Привет Александр, хорошего дня!');
+console.log('Hi Alexander, have a nice day!');
