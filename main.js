@@ -16,4 +16,4 @@ let arr = addExpenses.toLowerCase().split(',');
 console.log('Массив: ', arr);
 
 budgetDay = (money / 30);
-console.log('budgetDay: ', budgetDay);
+console.log('budgetDay: ', Math.round(budgetDay));
