@@ -1,19 +1,20 @@
-let money, income, addExpenses, deposit, mission, period, budgetDay;
+let num = 266219;
+let arr = Array.from(String(num), Number);
+console.log('arr: ', arr);
 
-money = 100000;
-income = 'Инвестиции';
-addExpenses = 'Комунальные расходы, Детский сад, Алименты';
-deposit = true;
-mission = 700000;
-period = 6;
+const calculate = (arr) => {
+    let sum = 1;
+    if (arr.length === 0) {
+        return null;
+    }
+    for (let i = 0; i < arr.length; i += 1) {
+        sum *= arr[i];
 
-console.log('money, income, depozit: ', money, income, deposit);
-console.log('Длина строки addExpenses: ', addExpenses.length);
-console.log('Период равен ' + period + ' месяцев.' + ' Цель заработать ' + mission + ' рублей');
-console.log('addExpenses: ', addExpenses.toLowerCase());
+    }
+    return sum;
+};
 
-let arr = addExpenses.toLowerCase().split(',');
-console.log('Массив: ', arr);
+let newNum = calculate(arr) ** 3;
 
-budgetDay = (money / 30);
-console.log('budgetDay: ', Math.round(budgetDay));
+let str = newNum.toString();
+console.log(str[0] + str[1]);
