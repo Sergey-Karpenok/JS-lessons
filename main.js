@@ -1,4 +1,8 @@
 let money, income, addExpenses, deposit, mission, period;
 
-alert('Привет Александр, хорошего дня!');
-console.log('Hi Alexander, have a nice day!');
+money = 100000;
+income = 'Инвестиции';
+addExpenses = 'Комунальные расходы, детский сад, алименты';
+deposit = true;
+mission = 700000;
+period = 6;
