@@ -21,8 +21,8 @@ money = +prompt('Ваш месячный доход?');
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 deposit = confirm('Есть ли у вас депозит в банке?');
 let expenses1 = prompt('Введите обязательную статью расходов?');
-let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount1 = +prompt('Во сколько это обойдется?');
+let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = +prompt('Во сколько это обойдется?');
 
 let budjetMonth = (money - (amount1 + amount2));
