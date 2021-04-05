@@ -25,6 +25,6 @@ let days = {
 
 console.log('days: ', (days[lang]));
 
-let namePerson = '';
+let namePerson = 'Макм';
 
-namePerson === 'Артем' ? console.log('Директор') :
+let result = (namePerson === 'Артем') ? console.log('Директор') : (namePerson === 'Максим') ? console.log('Преподаватель') : console.log('Студент');
