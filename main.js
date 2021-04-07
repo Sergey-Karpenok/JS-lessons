@@ -15,3 +15,12 @@ for (let i = 0; i < 7; i++) {
         console.log(arr[i]);
     }
 }
+
+for (let i = 2; i <= 100; i++) {
+    for (let j = 2; j < i; j++) {
+        if ((i % j == 0) && (i != j)) {
+            break;
+        }
+        console.log(i);
+    }
+};
