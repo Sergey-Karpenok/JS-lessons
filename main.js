@@ -1,4 +1,8 @@
 'use strict';
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n)
+}
+
 let income = 'Инвестиции';
 let mission = 700000;
 let period = 6;
@@ -11,8 +15,7 @@ let expenses = [];
 const start = function() {
     do {
         money = prompt('Ваш месячный доход?');
-        console.log(typeof money, money);
-    } while (isNaN(parseFloat(money)))
+    } while (!isNumber(money))
 }
 
 start();
