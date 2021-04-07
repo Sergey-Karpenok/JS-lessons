@@ -1,7 +1,7 @@
 'use strict';
 let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n)
-}
+};
 
 let income = 'Инвестиции';
 let mission = 700000;
@@ -16,18 +16,22 @@ const start = function() {
     do {
         money = prompt('Ваш месячный доход?');
     } while (!isNumber(money))
-}
+};
 
 start();
 
 const getExpensesMonth = function() {
     let sum = 0;
+    let num = 0;
     for (let i = 0; i < 2; i++) {
         expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
-        sum += +prompt('Во сколько это обойдется?', '5000');
+        do {
+            num = prompt('Во сколько это обойдется?', '5000');
+        } while (!isNumber(num))
+        sum += +num;
     }
     return sum;
-}
+};
 
 let expensesAmount = getExpensesMonth();
 let accumulatedMonth = getAccumulatedMonth();
