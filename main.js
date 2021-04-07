@@ -16,11 +16,14 @@ for (let i = 0; i < 7; i++) {
     }
 }
 
-for (let i = 2; i <= 100; i++) {
-    for (let j = 2; j < i; j++) {
-        if ((i % j == 0) && (i != j)) {
-            break;
+top:
+    for (let i = 2; i <= 100; i++) {
+        let j = 2;
+        for (; j < i; j++) {
+            if ((i % j == 0) && (i != j)) {
+                continue top;
+            }
+
         }
-        console.log(i);
-    }
-};
+        console.log(`${i}: Простое число. Делители этого числа: 1 и `, j);
+    };
