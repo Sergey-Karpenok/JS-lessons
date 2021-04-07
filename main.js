@@ -59,10 +59,15 @@ const showTypeOf = function(data) {
 }
 
 function getAccumulatedMonth() {
-    return money - expensesAmount;
+    return (money - expensesAmount);
 }
 const getTargetMonth = function() {
-    return Math.round(mission / accumulatedMonth);
+
+    if ((mission / accumulatedMonth) > 0) {
+        console.log('Цель будет достигнута через ' + Math.round(mission / accumulatedMonth) + ' месяцев.');
+    } else {
+        console.log('Цель не будет достигнута');
+    }
 }
 
 // Вывод на экран
@@ -71,6 +76,6 @@ showTypeOf(income);
 showTypeOf(deposit);
 console.log('Расходы за месяц: ', expensesAmount);
 console.log('Возможные расходы за месяц: ', arr);
-console.log('Цель будет достигнута через ' + getTargetMonth() + ' месяцев.');
+getTargetMonth();
 console.log('Бюджет на день: ', budgetDay);
 getStatusIncome();
