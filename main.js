@@ -7,9 +7,6 @@ let income = 'Инвестиции';
 let mission = 700000;
 let period = 6;
 let money;
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
-let arr = addExpenses.toLowerCase().split(',');
-let deposit = confirm('Есть ли у вас депозит в банке?');
 let expenses = [];
 
 const start = function() {
@@ -19,6 +16,10 @@ const start = function() {
 }
 
 start();
+
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
+let arr = addExpenses.toLowerCase().split(',');
+let deposit = confirm('Есть ли у вас депозит в банке?');
 
 const getExpensesMonth = function() {
     let sum = 0;
