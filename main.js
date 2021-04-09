@@ -1,25 +1,38 @@
 'use strict';
 let isNumber = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n)
+    return !isNaN(parseFloat(n)) && isFinite(n);
 };
-
-let income = 'Инвестиции';
-let mission = 700000;
-let period = 6;
-let money;
-let expenses = [];
-
-const start = function() {
-    do {
-        money = prompt('Ваш месячный доход?');
-    } while (!isNumber(money))
-};
-
+// Функция start() получает данные от пользователя и если данные в виде числа записывает их в переменную money 
+let money,
+    start = function() {
+        do {
+            money = prompt('Ваш месячный доход?');
+        } while (!isNumber(money))
+    };
 start();
 
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
-let arr = addExpenses.toLowerCase().split(',');
-let deposit = confirm('Есть ли у вас депозит в банке?');
+// Создаем объект appData
+let appData = {
+    income: {},
+    addIncome: [],
+    expenses: {},
+    addExpenses: [],
+    deposit: false,
+    mission: 500000,
+    period: 3,
+    budjet: money,
+    budgetDay: 0,
+    budgetMonth: 0,
+    expensesMonth: 0,
+    asking: function() {
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
+        appData.addExpenses = addExpenses.toLowerCase().split(',');
+        appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    }
+
+};
+
+let expenses = [];
 
 const getExpensesMonth = function() {
     let sum = 0;
@@ -55,28 +68,22 @@ const getStatusIncome = function() {
     }
 }
 
-const showTypeOf = function(data) {
-    console.log(data, typeof(data));
-}
 
 function getAccumulatedMonth() {
     return (money - expensesAmount);
 }
 const getTargetMonth = function() {
 
-    if ((mission / accumulatedMonth) > 0) {
-        console.log('Цель будет достигнута через ' + Math.round(mission / accumulatedMonth) + ' месяцев.');
+    if ((appData.mission / accumulatedMonth) > 0) {
+        console.log('Цель будет достигнута через ' + Math.round(appData.mission / accumulatedMonth) + ' месяцев.');
     } else {
         console.log('Цель не будет достигнута');
     }
 }
 
 // Вывод на экран
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
 console.log('Расходы за месяц: ', expensesAmount);
-console.log('Возможные расходы за месяц: ', arr);
+console.log('Возможные расходы за месяц: ', appData.addExpenses);
 getTargetMonth();
 console.log('Бюджет на день: ', budgetDay);
 getStatusIncome();
