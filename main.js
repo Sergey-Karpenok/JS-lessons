@@ -43,6 +43,29 @@ let appData = {
     },
     getAccumulatedMonth: function() {
         return (money - expensesAmount);
+    },
+    getTargetMonth: function() {
+        if ((appData.mission / accumulatedMonth) > 0) {
+            console.log('Цель будет достигнута через ' + Math.round(appData.mission / accumulatedMonth) + ' месяцев.');
+        } else {
+            console.log('Цель не будет достигнута');
+        }
+    },
+    getStatusIncome: function() {
+        switch (true) {
+            case (budgetDay >= 1200):
+                console.log('У вас высокий уровень дохода');
+                break;
+            case ((budgetDay >= 600) && (budgetDay < 1200)):
+                console.log('У вас средний уровень дохода');
+                break;
+            case ((budgetDay < 600) && (budgetDay >= 0)):
+                console.log('К сожалению у вас уровень дохода ниже среднего');
+                break;
+            case (budgetDay < 0):
+                console.log('Что то пошло не так');
+                break;
+        }
     }
 
 };
@@ -53,37 +76,10 @@ let expensesAmount = appData.getExpensesMonth();
 let accumulatedMonth = appData.getAccumulatedMonth();
 let budgetDay = Math.round(accumulatedMonth / 30);
 
-const getStatusIncome = function() {
-    switch (true) {
-        case (budgetDay >= 1200):
-            console.log('У вас высокий уровень дохода');
-            break;
-        case ((budgetDay >= 600) && (budgetDay < 1200)):
-            console.log('У вас средний уровень дохода');
-            break;
-        case ((budgetDay < 600) && (budgetDay >= 0)):
-            console.log('К сожалению у вас уровень дохода ниже среднего');
-            break;
-        case (budgetDay < 0):
-            console.log('Что то пошло не так');
-            break;
-    }
-}
-
-
-
-const getTargetMonth = function() {
-
-    if ((appData.mission / accumulatedMonth) > 0) {
-        console.log('Цель будет достигнута через ' + Math.round(appData.mission / accumulatedMonth) + ' месяцев.');
-    } else {
-        console.log('Цель не будет достигнута');
-    }
-}
 
 // Вывод на экран
 console.log('Расходы за месяц: ', expensesAmount);
 console.log('Возможные расходы за месяц: ', appData.addExpenses);
-getTargetMonth();
+appData.getTargetMonth();
 console.log('Бюджет на день: ', budgetDay);
-getStatusIncome();
+appData.getStatusIncome();
