@@ -28,26 +28,38 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    },
+    getExpensesMonth: function() {
+        let sum = 0;
+        let num = 0;
+        for (let i = 0; i < 2; i++) {
+            expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
+            do {
+                num = prompt('Во сколько это обойдется?', '5000');
+            } while (!isNumber(num))
+            sum += +num;
+        }
+        return sum;
     }
 
 };
 
 let expenses = [];
 
-const getExpensesMonth = function() {
-    let sum = 0;
-    let num = 0;
-    for (let i = 0; i < 2; i++) {
-        expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
-        do {
-            num = prompt('Во сколько это обойдется?', '5000');
-        } while (!isNumber(num))
-        sum += +num;
-    }
-    return sum;
-};
+// const getExpensesMonth = function() {
+//     let sum = 0;
+//     let num = 0;
+//     for (let i = 0; i < 2; i++) {
+//         expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
+//         do {
+//             num = prompt('Во сколько это обойдется?', '5000');
+//         } while (!isNumber(num))
+//         sum += +num;
+//     }
+//     return sum;
+// };
 
-let expensesAmount = getExpensesMonth();
+let expensesAmount = appData.getExpensesMonth();
 let accumulatedMonth = getAccumulatedMonth();
 let budgetDay = Math.round(accumulatedMonth / 30);
 
