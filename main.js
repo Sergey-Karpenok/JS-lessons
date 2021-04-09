@@ -40,27 +40,17 @@ let appData = {
             sum += +num;
         }
         return sum;
+    },
+    getAccumulatedMonth: function() {
+        return (money - expensesAmount);
     }
 
 };
 
 let expenses = [];
 
-// const getExpensesMonth = function() {
-//     let sum = 0;
-//     let num = 0;
-//     for (let i = 0; i < 2; i++) {
-//         expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
-//         do {
-//             num = prompt('Во сколько это обойдется?', '5000');
-//         } while (!isNumber(num))
-//         sum += +num;
-//     }
-//     return sum;
-// };
-
 let expensesAmount = appData.getExpensesMonth();
-let accumulatedMonth = getAccumulatedMonth();
+let accumulatedMonth = appData.getAccumulatedMonth();
 let budgetDay = Math.round(accumulatedMonth / 30);
 
 const getStatusIncome = function() {
@@ -81,9 +71,7 @@ const getStatusIncome = function() {
 }
 
 
-function getAccumulatedMonth() {
-    return (money - expensesAmount);
-}
+
 const getTargetMonth = function() {
 
     if ((appData.mission / accumulatedMonth) > 0) {
