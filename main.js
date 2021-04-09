@@ -26,27 +26,31 @@ let appData = {
     expensesMonth: 0,
     asking: function() {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
-        appData.addExpenses = addExpenses.toLowerCase().split(',');
-        appData.deposit = confirm('Есть ли у вас депозит в банке?');
-    },
-    getExpensesMonth: function() {
-        let sum = 0;
+        this.addExpenses = addExpenses.toLowerCase().split(',');
+        this.deposit = confirm('Есть ли у вас депозит в банке?');
+        let key = '';
         let num = 0;
+
         for (let i = 0; i < 2; i++) {
-            expenses[i] = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
+            key = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
             do {
                 num = prompt('Во сколько это обойдется?', '5000');
             } while (!isNumber(num))
-            sum += +num;
+            this.expenses[key] = num;
+            console.log('this.expenses: ', this.expenses);
         }
-        return sum;
+    },
+    getExpensesMonth: function() {
+        for (let key in this.expenses) {
+            this.expensesMonth += +this.expenses[key];
+        }
     },
     getAccumulatedMonth: function() {
-        return (money - expensesAmount);
+        return (money - this.expensesMonth);
     },
     getTargetMonth: function() {
-        if ((appData.mission / accumulatedMonth) > 0) {
-            console.log('Цель будет достигнута через ' + Math.round(appData.mission / accumulatedMonth) + ' месяцев.');
+        if ((this.mission / accumulatedMonth) > 0) {
+            console.log('Цель будет достигнута через ' + Math.round(this.mission / accumulatedMonth) + ' месяцев.');
         } else {
             console.log('Цель не будет достигнута');
         }
@@ -70,15 +74,17 @@ let appData = {
 
 };
 
+appData.asking();
+
 let expenses = [];
 
-let expensesAmount = appData.getExpensesMonth();
+appData.getExpensesMonth();
 let accumulatedMonth = appData.getAccumulatedMonth();
 let budgetDay = Math.round(accumulatedMonth / 30);
 
 
 // Вывод на экран
-console.log('Расходы за месяц: ', expensesAmount);
+console.log('Расходы за месяц: ', appData.expensesMonth);
 console.log('Возможные расходы за месяц: ', appData.addExpenses);
 appData.getTargetMonth();
 console.log('Бюджет на день: ', budgetDay);
