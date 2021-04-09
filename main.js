@@ -37,7 +37,6 @@ let appData = {
                 num = prompt('Во сколько это обойдется?', '5000');
             } while (!isNumber(num))
             this.expenses[key] = num;
-            console.log('this.expenses: ', this.expenses);
         }
     },
     getExpensesMonth: function() {
@@ -50,8 +49,8 @@ let appData = {
         this.budgetDay = Math.round(this.budgetMonth / 30);
     },
     getTargetMonth: function() {
-        if ((this.mission / this.budjetMonth) > 0) {
-            console.log('Цель будет достигнута через ' + Math.round(this.mission / this.budjetMonth) + ' месяцев.');
+        if ((this.mission / this.budgetMonth) > 0) {
+            console.log('Цель будет достигнута через ' + Math.round(this.mission / this.budgetMonth) + ' месяцев.');
         } else {
             console.log('Цель не будет достигнута');
         }
@@ -71,8 +70,13 @@ let appData = {
                 console.log('Что то пошло не так');
                 break;
         }
+    },
+    showMetods: function() {
+        console.log('Наша программа включает в себя данные: ');
+        for (let key in appData) {
+            console.log(appData[key]);
+        }
     }
-
 };
 
 appData.asking();
@@ -81,7 +85,6 @@ appData.getBudget();
 
 // Вывод на экран
 console.log('Расходы за месяц: ', appData.expensesMonth);
-console.log('Возможные расходы за месяц: ', appData.addExpenses);
 appData.getTargetMonth();
-console.log('Бюджет на день: ', appData.budgetDay);
 appData.getStatusIncome();
+appData.showMetods();
