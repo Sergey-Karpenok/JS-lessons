@@ -18,6 +18,8 @@ let appData = {
     expenses: {},
     addExpenses: [],
     deposit: false,
+    percentDeposit: 0,
+    moneyDeposit: 0,
     mission: 500000,
     period: 3,
     budjet: money,
@@ -25,6 +27,14 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function() {
+
+        if (confirm('У вас есть дополнительный доход?')) {
+            let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
+            let cashIncome = prompt('Сколько это вам приносит?', 5000);
+            this.income[itemIncome] = cashIncome;
+            console.log('this.income: ', this.income);
+        }
+
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
         this.addExpenses = addExpenses.toLowerCase().split(',');
         this.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -76,6 +86,15 @@ let appData = {
         for (let key in appData) {
             console.log(appData[key]);
         }
+    },
+    getInfoDeposit: function() {
+        if (this.deposit) {
+            this.percentDeposit = prompt('Какой у вас процент по депозиту?', '10')
+            this.moneyDeposit = prompt('Какова сумма депозит?', 5000)
+        }
+    },
+    calcSavedMoney: function() {
+        return this.budgetMonth * this.period
     }
 };
 
