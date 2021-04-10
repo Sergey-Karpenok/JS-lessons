@@ -29,8 +29,16 @@ let appData = {
     asking: function() {
 
         if (confirm('У вас есть дополнительный доход?')) {
-            let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
-            let cashIncome = prompt('Сколько это вам приносит?', 5000);
+            do {
+                let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
+                console.log('itemIncome: ', itemIncome);
+            } while (!isNumber(itemIncome));
+
+            do {
+                let cashIncome = prompt('Сколько это вам приносит?', 5000);
+                console.log('cashIncome: ', cashIncome);
+            } while (isNumber(cashIncome));
+
             this.income[itemIncome] = cashIncome;
             console.log('this.income: ', this.income);
         }
