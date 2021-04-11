@@ -40,12 +40,10 @@ let appData = {
                 cashIncome = prompt('Сколько это вам приносит?', 5000);
             } while (!/^[0-9]+$/.test(cashIncome));
 
-
             this.income[itemIncome] = cashIncome;
-            console.log('this.income: ', this.income);
         }
 
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад,Алименты');
         this.addExpenses = addExpenses.toLowerCase().split(',');
         this.deposit = confirm('Есть ли у вас депозит в банке?');
         appData.getInfoDeposit();
@@ -124,3 +122,5 @@ console.log('Расходы за месяц: ', appData.expensesMonth);
 appData.getTargetMonth();
 appData.getStatusIncome();
 appData.showMetods();
+
+console.log(appData.addExpenses.map(n => `${n[0].toUpperCase()}${n.slice(1)}`).join(', '))
