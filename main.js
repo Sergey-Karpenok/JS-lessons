@@ -3,11 +3,12 @@ let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 // Функция start() получает данные от пользователя и если данные в виде числа записывает их в переменную money 
-let money,
+let money, itemIncome, cashIncome,
     start = function() {
         do {
             money = prompt('Ваш месячный доход?');
         } while (!isNumber(money))
+
     };
 start();
 
@@ -29,15 +30,16 @@ let appData = {
     asking: function() {
 
         if (confirm('У вас есть дополнительный доход?')) {
-            do {
-                let itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
-                console.log('itemIncome: ', itemIncome);
-            } while (!isNumber(itemIncome));
 
             do {
-                let cashIncome = prompt('Сколько это вам приносит?', 5000);
-                console.log('cashIncome: ', cashIncome);
-            } while (isNumber(cashIncome));
+                itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
+            } while (!/\D/.test(itemIncome));
+
+
+            do {
+                cashIncome = prompt('Сколько это вам приносит?', 5000);
+            } while (!/^[0-9]+$/.test(cashIncome));
+
 
             this.income[itemIncome] = cashIncome;
             console.log('this.income: ', this.income);
@@ -46,6 +48,7 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад, Алименты');
         this.addExpenses = addExpenses.toLowerCase().split(',');
         this.deposit = confirm('Есть ли у вас депозит в банке?');
+        appData.getInfoDeposit();
         let key = '';
         let num = 0;
 
@@ -97,8 +100,14 @@ let appData = {
     },
     getInfoDeposit: function() {
         if (this.deposit) {
-            this.percentDeposit = prompt('Какой у вас процент по депозиту?', '10')
-            this.moneyDeposit = prompt('Какова сумма депозит?', 5000)
+            do {
+                this.percentDeposit = prompt('Какой у вас процент по депозиту?', '10');
+            } while (!/^[0-9]+$/.test(this.percentDeposit))
+
+            do {
+                this.moneyDeposit = prompt('Какова сумма депозит?', 5000);
+            } while (!/^[0-9]+$/.test(this.moneyDeposit))
+
         }
     },
     calcSavedMoney: function() {
