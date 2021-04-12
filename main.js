@@ -33,7 +33,7 @@ let appData = {
 
             do {
                 itemIncome = prompt('Какой у вас дополнительный заработок?', 'Инвестиции');
-            } while (!/\D/.test(itemIncome));
+            } while (!/^[А-Я]/.test(itemIncome));
 
 
             do {
