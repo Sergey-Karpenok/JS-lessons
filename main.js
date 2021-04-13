@@ -22,7 +22,23 @@ book[4].childNodes[1].childNodes[1].textContent = 'Книга 3. this и Про�
 
 advBlock.style.display = 'none';
 
-console.log(advBlock);
+
+console.log('book[0].childNodes[5]: ', book[5].childNodes[3].children);
+
+// 3-я книга
+book[0].childNodes[3].children[3].after(book[0].childNodes[3].children[6]);
+book[0].childNodes[3].children[5].before(book[0].childNodes[3].children[8]);
+book[0].childNodes[3].children[9].after(book[0].childNodes[3].children[2]);
+
+// 5-я книга
+
+book[5].childNodes[3].children[1].after(book[5].childNodes[3].children[9]);
+book[5].childNodes[3].children[2].after(book[5].childNodes[3].children[4]);
+book[5].childNodes[3].children[5].after(book[5].childNodes[3].children[4]);
+book[5].childNodes[3].children[8].after(book[5].childNodes[3].children[6]);
+
+console.log('book[0].childNodes[5]: ', book[5].childNodes[3].children);
+
 
 // let buttonStart = document.getElementById('start');
 // console.log('buttonStart: ', buttonStart);
