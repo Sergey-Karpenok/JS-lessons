@@ -1,9 +1,12 @@
 'use strict';
 
 const book = document.querySelectorAll('.book'),
-    books = document.querySelector('.books');
+    books = document.querySelector('.books'),
+    body = document.getElementsByTagName('body');
+
 
 console.log('book: ', book);
+console.log('body: ', body);
 
 books.append(book[1]);
 books.append(book[0]);
@@ -11,6 +14,8 @@ books.append(book[4]);
 books.append(book[3]);
 books.append(book[5]);
 books.append(book[2]);
+
+body[0].style.backgroundImage = 'url(./image/you-dont-know-js.jpg)';
 
 
 // let buttonStart = document.getElementById('start');
