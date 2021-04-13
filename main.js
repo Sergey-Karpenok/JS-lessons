@@ -2,7 +2,8 @@
 
 const book = document.querySelectorAll('.book'),
     books = document.querySelector('.books'),
-    body = document.getElementsByTagName('body');
+    body = document.getElementsByTagName('body'),
+    advBlock = document.querySelector('.adv');
 
 
 console.log('book: ', book);
@@ -18,6 +19,10 @@ books.append(book[2]);
 body[0].style.backgroundImage = 'url(./image/you-dont-know-js.jpg)';
 
 book[4].childNodes[1].childNodes[1].textContent = 'Книга 3. this и Прототипы Объектов'
+
+advBlock.style.display = 'none';
+
+console.log(advBlock);
 
 // let buttonStart = document.getElementById('start');
 // console.log('buttonStart: ', buttonStart);
