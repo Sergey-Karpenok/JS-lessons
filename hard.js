@@ -119,7 +119,7 @@ let showTime = function() {
         return text_forms[2];
     }
 
-    console.log(`Сегодня: ${day}, ${date} ${month} ${year} года, ${hour} ${changeHour(hour)} ${minutes} ${declOfNum(minutes, ['минута', 'минуты', 'минут'])} ${seconds} ${declOfNum(minutes, ['секунда', 'секунды', 'секунд'])}`);
+    console.log(`Сегодня: ${day}, ${date} ${month} ${year} года, ${hour} ${changeHour(hour)} ${minutes} ${declOfNum(minutes, ['минута', 'минуты', 'минут'])} ${seconds} ${declOfNum(seconds, ['секунда', 'секунды', 'секунд'])}`);
 
     console.log(`${setZero(date)}.${setZero(monthNum)}.${year} - ${setZero(hour)}:${setZero(minutes)}:${setZero(seconds)}`)
 }
