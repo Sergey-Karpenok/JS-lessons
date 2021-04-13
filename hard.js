@@ -110,7 +110,16 @@ let showTime = function() {
         }
     }
 
-    console.log(`Сегодня: ${day}, ${date} ${month} ${year} года, ${hour} ${changeHour(hour)} ${minutes} минут ${seconds} секунд`);
+    function declOfNum(n, text_forms) {
+        n = Math.abs(n) % 100;
+        var n1 = n % 10;
+        if (n > 10 && n < 20) { return text_forms[2]; }
+        if (n1 > 1 && n1 < 5) { return text_forms[1]; }
+        if (n1 == 1) { return text_forms[0]; }
+        return text_forms[2];
+    }
+
+    console.log(`Сегодня: ${day}, ${date} ${month} ${year} года, ${hour} ${changeHour(hour)} ${minutes} ${declOfNum(minutes, ['минута', 'минуты', 'минут'])} ${seconds} ${declOfNum(minutes, ['секунда', 'секунды', 'секунд'])}`);
 
     console.log(`${setZero(date)}.${setZero(monthNum)}.${year} - ${setZero(hour)}:${setZero(minutes)}:${setZero(seconds)}`)
 }
