@@ -17,6 +17,7 @@ books.append(book[2]);
 
 body[0].style.backgroundImage = 'url(./image/you-dont-know-js.jpg)';
 
+book[4].childNodes[1].childNodes[1].textContent = 'Книга 3. this и Прототипы Объектов'
 
 // let buttonStart = document.getElementById('start');
 // console.log('buttonStart: ', buttonStart);
