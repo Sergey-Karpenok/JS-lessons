@@ -1,49 +1,62 @@
 'use strict';
 
-let buttonStart = document.getElementById('start');
-console.log('buttonStart: ', buttonStart);
-let btnIncomeAdd = document.getElementsByTagName('button')[0];
-console.log('btnIncomeAdd: ', btnIncomeAdd);
-let btnExpensesAdd = document.getElementsByTagName('button')[1];
-console.log('btnExpensesAdd: ', btnExpensesAdd);
-let depositCheckBox = document.querySelector('#deposit-check')
-console.log('depositCheckBox: ', depositCheckBox);
-let additionalIncomeItems = document.querySelectorAll('.additional_income-item');
-console.log('additionalIncomeTtems: ', additionalIncomeItems);
+const book = document.querySelectorAll('.book'),
+    books = document.querySelector('.books');
 
-// result
-let inputBudgetDayValue = document.getElementsByClassName('budget_day-value');
-console.log('inputBudgetDayValue: ', inputBudgetDayValue);
-let inputExpensesMonthValue = document.getElementsByClassName('expenses_month-value');
-console.log('inputExpensesMonthValue: ', inputExpensesMonthValue);
-let inputAdditionalIncomeValue = document.getElementsByClassName('additional_income-value');
-console.log('inputAdditionalIncomeValue: ', inputAdditionalIncomeValue);
-let inputAdditionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
-console.log('inputAdditionalExpensesValue: ', inputAdditionalExpensesValue);
-let inputIncomePeriodValue = document.getElementsByClassName('income_period-value');
-console.log('inputIncomePeriodValue: ', inputIncomePeriodValue);
-let inputTargetMonthValue = document.getElementsByClassName('target_month-value');
-console.log('inputTargetMonthValue: ', inputTargetMonthValue);
+console.log('book: ', book);
 
-// data
-let salaryAmount = document.querySelector('.salary-amount');
-console.log('salaryAmount: ', salaryAmount);
-let incomeTitle = document.querySelector('.income-title')
-console.log('incomeTitle: ', incomeTitle);
-let incomeAount = document.querySelector('.income-amount')
-console.log('incomeAount: ', incomeAount);
-let additionalIncomeItemFist = document.querySelectorAll('.additional_income-item')[0];
-console.log('dditionalIncomeItemFist: ', additionalIncomeItemFist);
-let additionalIncomeItemSecond = document.querySelectorAll('.additional_income-item')[1];
-console.log('additionalIncomeItemSecond: ', additionalIncomeItemSecond);
-let expensesTitle = document.querySelector('.expenses-title');
-console.log('expensesTitle: ', expensesTitle);
-let expensesAmount = document.querySelector('.expenses-amount')
-console.log('expensesAmount: ', expensesAmount);
-let additionalExpensesItem = document.querySelector('.additional_expenses-item');
-console.log('additionalExpensesItem: ', additionalExpensesItem);
-let periodSelect = document.querySelector('.period-select');
-console.log('periodSelect: ', periodSelect);
+books.append(book[1]);
+books.append(book[0]);
+books.append(book[4]);
+books.append(book[3]);
+books.append(book[5]);
+books.append(book[2]);
+
+
+// let buttonStart = document.getElementById('start');
+// console.log('buttonStart: ', buttonStart);
+// let btnIncomeAdd = document.getElementsByTagName('button')[0];
+// console.log('btnIncomeAdd: ', btnIncomeAdd);
+// let btnExpensesAdd = document.getElementsByTagName('button')[1];
+// console.log('btnExpensesAdd: ', btnExpensesAdd);
+// let depositCheckBox = document.querySelector('#deposit-check')
+// console.log('depositCheckBox: ', depositCheckBox);
+// let additionalIncomeItems = document.querySelectorAll('.additional_income-item');
+// console.log('additionalIncomeTtems: ', additionalIncomeItems);
+
+// // result
+// let inputBudgetDayValue = document.getElementsByClassName('budget_day-value');
+// console.log('inputBudgetDayValue: ', inputBudgetDayValue);
+// let inputExpensesMonthValue = document.getElementsByClassName('expenses_month-value');
+// console.log('inputExpensesMonthValue: ', inputExpensesMonthValue);
+// let inputAdditionalIncomeValue = document.getElementsByClassName('additional_income-value');
+// console.log('inputAdditionalIncomeValue: ', inputAdditionalIncomeValue);
+// let inputAdditionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+// console.log('inputAdditionalExpensesValue: ', inputAdditionalExpensesValue);
+// let inputIncomePeriodValue = document.getElementsByClassName('income_period-value');
+// console.log('inputIncomePeriodValue: ', inputIncomePeriodValue);
+// let inputTargetMonthValue = document.getElementsByClassName('target_month-value');
+// console.log('inputTargetMonthValue: ', inputTargetMonthValue);
+
+// // data
+// let salaryAmount = document.querySelector('.salary-amount');
+// console.log('salaryAmount: ', salaryAmount);
+// let incomeTitle = document.querySelector('.income-title')
+// console.log('incomeTitle: ', incomeTitle);
+// let incomeAount = document.querySelector('.income-amount')
+// console.log('incomeAount: ', incomeAount);
+// let additionalIncomeItemFist = document.querySelectorAll('.additional_income-item')[0];
+// console.log('dditionalIncomeItemFist: ', additionalIncomeItemFist);
+// let additionalIncomeItemSecond = document.querySelectorAll('.additional_income-item')[1];
+// console.log('additionalIncomeItemSecond: ', additionalIncomeItemSecond);
+// let expensesTitle = document.querySelector('.expenses-title');
+// console.log('expensesTitle: ', expensesTitle);
+// let expensesAmount = document.querySelector('.expenses-amount')
+// console.log('expensesAmount: ', expensesAmount);
+// let additionalExpensesItem = document.querySelector('.additional_expenses-item');
+// console.log('additionalExpensesItem: ', additionalExpensesItem);
+// let periodSelect = document.querySelector('.period-select');
+// console.log('periodSelect: ', periodSelect);
 
 // let isNumber = function(n) {
 //     return !isNaN(parseFloat(n)) && isFinite(n);
