@@ -10,8 +10,8 @@ let additionalIncomeItems = document.querySelectorAll('.additional_income-item')
 let budgetDayValue = document.getElementsByClassName('budget_day-value')[0];
 let budjetMonthValue = document.getElementsByTagName('input')[13];
 let expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
-let inputAdditionalIncomeValue = document.getElementsByClassName('additional_income-value');
-let inputAdditionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+let additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
+let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
 let inputIncomePeriodValue = document.getElementsByClassName('income_period-value');
 let inputTargetMonthValue = document.getElementsByClassName('target_month-value');
 
@@ -19,8 +19,7 @@ let inputTargetMonthValue = document.getElementsByClassName('target_month-value'
 let salaryAmount = document.querySelector('.salary-amount');
 let incomeTitle = document.querySelector('.income-title')
 let incomeAount = document.querySelector('.income-amount')
-let additionalIncomeItemFist = document.querySelectorAll('.additional_income-item')[0];
-let additionalIncomeItemSecond = document.querySelectorAll('.additional_income-item')[1];
+let additionalIncomeItem = document.querySelectorAll('.additional_income-item');
 let expensesTitle = document.querySelector('.expenses-title');
 let expensesItems = document.querySelectorAll('.expenses-items');
 let additionalExpensesItem = document.querySelector('.additional_expenses-item');
@@ -60,7 +59,9 @@ let appData = {
 
         appData.getExpensesMonth();
         appData.getBudget();
+        appData.getAddExpenses();
         appData.showResult();
+        appData.getAddIncome();
     },
     asking: function() {
 
@@ -97,12 +98,32 @@ let appData = {
             }
         })
     },
+    getAddExpenses: function() {
+        let addExpenses = additionalExpensesItem.value.split(',');
+        addExpenses.forEach(function(item) {
+            item = item.trim();
+            if (item !== '') {
+                appData.addExpenses.push(item);
+            }
+        })
+    },
+    getAddIncome: function() {
+
+        additionalIncomeItem.forEach(function(item) {
+            console.log('additionalIncomeItem: ', additionalIncomeItem);
+            let itemValue = item.value.trim();
+            if (itemValue !== '') {
+                appData.addIncome.push(itemValue);
+            }
+        })
+    },
     showResult: function() {
         budjetMonthValue.value = appData.budgetMonth;
-
         budgetDayValue.value = appData.budgetDay;
-
         expensesMonthValue.value = appData.expensesMonth;
+        additionalExpensesValue.value = appData.addExpenses.join(', ')
+        additionalIncomeValue.value = appData.addIncome.join(', ');
+
     },
     getExpensesMonth: function() {
         for (let key in this.expenses) {
