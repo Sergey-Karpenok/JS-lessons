@@ -51,17 +51,17 @@ let appData = {
 
     start: function() {
 
-        appData.budjet = salaryAmount.value;
-        appData.getExpenses();
-        appData.getAddIncome();
-        appData.getIncome();
+        this.budjet = salaryAmount.value;
+        this.getExpenses();
+        this.getAddIncome();
+        this.getIncome();
 
-        appData.getAddExpenses();
+        this.getAddExpenses();
 
-        appData.getExpensesMonth();
-        appData.getIncomeMonth();
-        appData.getBudget();
-        appData.showResult();
+        this.getExpensesMonth();
+        this.getIncomeMonth();
+        this.getBudget();
+        this.showResult();
     },
     addExpensesBlock: function() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
@@ -139,7 +139,6 @@ let appData = {
         for (let key in appData.income) {
             appData.incomeMonth += +appData.income[key];
         }
-        console.log('appData.incomeMonth: ', appData.income);
     },
     getBudget: function() {
         this.budgetMonth = Math.round(this.budjet - this.expensesMonth + this.incomeMonth);
@@ -194,7 +193,7 @@ salaryAmount.addEventListener('input', function() {
     buttonStart.disabled = salaryAmount.value.trim() === ''
 });
 
-buttonStart.addEventListener('click', appData.start);
+buttonStart.addEventListener('click', appData.start.bind(appData));
 btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
 btnIncomeAdd.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', function() {
