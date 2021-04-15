@@ -50,10 +50,7 @@ let appData = {
     expensesMonth: 0,
 
     start: function() {
-        if (salaryAmount.value === '') {
-            alert(' Пожалуйста заполните обязательное поле "Месячный доход"');
-            return;
-        }
+        console.log(buttonStart.disabled);
         appData.budjet = salaryAmount.value;
         appData.getExpenses();
         appData.getIncome();
@@ -63,18 +60,6 @@ let appData = {
         appData.getAddIncome();
         appData.getBudget();
         appData.showResult();
-    },
-    asking: function() {
-
-        let key = '';
-        let num = 0;
-        for (let i = 0; i < 2; i++) {
-            key = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
-            do {
-                num = prompt('Во сколько это обойдется?', '5000');
-            } while (!isNumber(num))
-            this.expenses[key] = num;
-        }
     },
     addExpensesBlock: function() {
         expensesItems = document.querySelectorAll('.expenses-items');
@@ -198,6 +183,12 @@ let appData = {
     },
 
 };
+
+
+buttonStart.disabled = true;
+salaryAmount.addEventListener('input', function() {
+    buttonStart.disabled = salaryAmount.value.trim() === ''
+});
 
 buttonStart.addEventListener('click', appData.start);
 btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
