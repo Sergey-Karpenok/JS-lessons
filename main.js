@@ -94,29 +94,27 @@ let appData = {
             }
         })
     },
+    addIncomeBlock: function() {
+        incomeItem = document.querySelectorAll('.income-items');
+        if (incomeItem.length < 3) {
+            let cloneIncomeItem = incomeItem[0].cloneNode(true);
+            incomeItem[0].parentNode.insertBefore(cloneIncomeItem, btnIncomeAdd);
+        } else {
+            btnIncomeAdd.style.display = 'none';
+        }
+    },
     getIncome: function() {
         incomeItem.forEach(function(item) {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if (itemIncome !== "" && cashIncome !== "") {
                 appData.income[itemIncome] = cashIncome;
-                console.log('appData.income: ', appData.income);
             }
-            console.log('appData.income: ', appData.income);
         })
-
-        // if (confirm('Есть ли у ва дополнительный доход?')) {
-        //     let itemIncome = prompt('Какой', 'Покер');
-        //     let cashIncome = +prompt('Сколько в месяц это тебе приносит?', 10000);
-        //     appData.income[itemIncome] = cashIncome;
-        // }
-
         for (let key in appData.income) {
             appData.incomeMonth += +appData.income[key]
             console.log('appData.incomeMonth: ', appData.incomeMonth);
-
         }
-
     },
     getAddExpenses: function() {
         let addExpenses = additionalExpensesItem.value.split(',');
@@ -200,6 +198,7 @@ let appData = {
 
 buttonStart.addEventListener('click', appData.start);
 btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
+btnIncomeAdd.addEventListener('click', appData.addIncomeBlock);
 
 
 
