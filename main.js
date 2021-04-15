@@ -12,7 +12,7 @@ let budjetMonthValue = document.getElementsByTagName('input')[13];
 let expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
 let additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
 let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
-let inputIncomePeriodValue = document.getElementsByClassName('income_period-value');
+let incomePeriodValue = document.getElementsByClassName('income_period-value')[0];
 let targetMonthValue = document.getElementsByClassName('target_month-value')[0];
 
 // data
@@ -25,6 +25,7 @@ let expensesItems = document.querySelectorAll('.expenses-items');
 let additionalExpensesItem = document.querySelector('.additional_expenses-item');
 let periodSelect = document.querySelector('.period-select');
 let targetAmount = document.getElementsByClassName('target-amount')[0];
+let incomeItem = document.querySelectorAll('.income-items');
 
 // Функция возвращает true если переданное значение число
 let isNumber = function(n) {
@@ -36,13 +37,13 @@ let itemIncome, cashIncome;
 // Создаем объект appData
 let appData = {
     income: {},
+    incomeMonth: 0,
     addIncome: [],
     expenses: {},
     addExpenses: [],
     deposit: false,
     percentDeposit: 0,
     moneyDeposit: 0,
-    period: 3,
     budjet: 0,
     budgetDay: 0,
     budgetMonth: 0,
@@ -55,23 +56,18 @@ let appData = {
         }
         appData.budjet = salaryAmount.value;
         appData.getExpenses();
-
-
+        appData.getIncome();
         appData.getExpensesMonth();
-        appData.getBudget();
+
         appData.getAddExpenses();
-        appData.showResult();
         appData.getAddIncome();
+        appData.getBudget();
+        appData.showResult();
     },
     asking: function() {
 
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'Детский сад,Алименты');
-        this.addExpenses = addExpenses.toLowerCase().split(',');
-        this.deposit = confirm('Есть ли у вас депозит в банке?');
-        appData.getInfoDeposit();
         let key = '';
         let num = 0;
-
         for (let i = 0; i < 2; i++) {
             key = prompt('Введите обязательную статью расходов?', 'Комунальные расходы');
             do {
@@ -98,6 +94,30 @@ let appData = {
             }
         })
     },
+    getIncome: function() {
+        incomeItem.forEach(function(item) {
+            let itemIncome = item.querySelector('.income-title').value;
+            let cashIncome = item.querySelector('.income-amount').value;
+            if (itemIncome !== "" && cashIncome !== "") {
+                appData.income[itemIncome] = cashIncome;
+                console.log('appData.income: ', appData.income);
+            }
+            console.log('appData.income: ', appData.income);
+        })
+
+        // if (confirm('Есть ли у ва дополнительный доход?')) {
+        //     let itemIncome = prompt('Какой', 'Покер');
+        //     let cashIncome = +prompt('Сколько в месяц это тебе приносит?', 10000);
+        //     appData.income[itemIncome] = cashIncome;
+        // }
+
+        for (let key in appData.income) {
+            appData.incomeMonth += +appData.income[key]
+            console.log('appData.incomeMonth: ', appData.incomeMonth);
+
+        }
+
+    },
     getAddExpenses: function() {
         let addExpenses = additionalExpensesItem.value.split(',');
         addExpenses.forEach(function(item) {
@@ -123,6 +143,8 @@ let appData = {
         additionalExpensesValue.value = appData.addExpenses.join(', ')
         additionalIncomeValue.value = appData.addIncome.join(', ');
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
+        incomePeriodValue.value = appData.calcSavedMoney();
+
     },
     getExpensesMonth: function() {
         for (let key in this.expenses) {
@@ -130,7 +152,7 @@ let appData = {
         }
     },
     getBudget: function() {
-        this.budgetMonth = Math.round(this.budjet - this.expensesMonth);
+        this.budgetMonth = Math.round(this.budjet - this.expensesMonth + this.incomeMonth);
         this.budgetDay = Math.round(this.budgetMonth / 30);
     },
     getTargetMonth: function() {
@@ -171,7 +193,7 @@ let appData = {
         }
     },
     calcSavedMoney: function() {
-        return this.budgetMonth * this.period
+        return this.budgetMonth * periodSelect.value
     },
 
 };
