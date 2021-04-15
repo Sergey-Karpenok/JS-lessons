@@ -62,12 +62,22 @@ let appData = {
         this.getIncomeMonth();
         this.getBudget();
         this.showResult();
+
+        let allInputs = document.querySelectorAll('input[type=text]');
+        allInputs.forEach(function(item) {
+            item.disabled = true;
+        })
+
+        buttonStart.textContent = 'Сбросить';
+
+
     },
     reset: function() {
-        let allInputs = document.querySelectorAll('input[type=text]')
+        let allInputs = document.querySelectorAll('input[type=text]');
         allInputs.forEach(function(item) {
             item.value = '';
         })
+        console.log('allInputs: ', allInputs);
     },
     addExpensesBlock: function() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
