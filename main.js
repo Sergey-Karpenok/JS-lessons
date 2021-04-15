@@ -113,7 +113,6 @@ let appData = {
         })
         for (let key in appData.income) {
             appData.incomeMonth += +appData.income[key]
-            console.log('appData.incomeMonth: ', appData.incomeMonth);
         }
     },
     getAddExpenses: function() {
@@ -199,6 +198,12 @@ let appData = {
 buttonStart.addEventListener('click', appData.start);
 btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
 btnIncomeAdd.addEventListener('click', appData.addIncomeBlock);
+periodSelect.addEventListener('input', function() {
+    let periodAmount = document.querySelector('.period-amount');
+    console.log('periodAmount: ', periodAmount);
+
+    periodAmount.textContent = periodSelect.value;
+})
 
 
 
