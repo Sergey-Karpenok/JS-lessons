@@ -63,6 +63,12 @@ let appData = {
         this.getBudget();
         this.showResult();
     },
+    reset: function() {
+        let allInputs = document.querySelectorAll('input[type=text]')
+        allInputs.forEach(function(item) {
+            item.value = '';
+        })
+    },
     addExpensesBlock: function() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, btnExpensesAdd);
@@ -187,7 +193,7 @@ let appData = {
 
 };
 
-
+appData.reset();
 buttonStart.disabled = true;
 salaryAmount.addEventListener('input', function() {
     buttonStart.disabled = salaryAmount.value.trim() === ''
