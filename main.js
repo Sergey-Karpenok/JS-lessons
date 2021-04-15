@@ -1,6 +1,7 @@
 'use strict';
 
 let buttonStart = document.getElementById('start');
+let buttonCancel = document.getElementById('cancel');
 let btnIncomeAdd = document.getElementsByTagName('button')[0];
 let btnExpensesAdd = document.getElementsByTagName('button')[1];
 let depositCheckBox = document.querySelector('#deposit-check')
@@ -68,7 +69,8 @@ let appData = {
             item.disabled = true;
         })
 
-        buttonStart.textContent = 'Сбросить';
+        buttonStart.style.display = 'none';
+        buttonCancel.style.display = 'block';
 
 
     },
@@ -76,8 +78,10 @@ let appData = {
         let allInputs = document.querySelectorAll('input[type=text]');
         allInputs.forEach(function(item) {
             item.value = '';
+            item.disabled = false;
         })
-        console.log('allInputs: ', allInputs);
+        buttonStart.style.display = 'block';
+        buttonCancel.style.display = 'none';
     },
     addExpensesBlock: function() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
@@ -203,7 +207,7 @@ let appData = {
 
 };
 
-appData.reset();
+buttonCancel.addEventListener('click', appData.reset)
 buttonStart.disabled = true;
 salaryAmount.addEventListener('input', function() {
     buttonStart.disabled = salaryAmount.value.trim() === ''
