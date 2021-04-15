@@ -142,6 +142,10 @@ let appData = {
         targetMonthValue.value = Math.ceil(appData.getTargetMonth());
         incomePeriodValue.value = appData.calcSavedMoney();
 
+        periodSelect.addEventListener('input', function() {
+            incomePeriodValue.value = appData.calcSavedMoney();
+        });
+
     },
     getExpensesMonth: function() {
         for (let key in this.expenses) {
@@ -200,10 +204,8 @@ btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
 btnIncomeAdd.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', function() {
     let periodAmount = document.querySelector('.period-amount');
-    console.log('periodAmount: ', periodAmount);
-
     periodAmount.textContent = periodSelect.value;
-})
+});
 
 
 
