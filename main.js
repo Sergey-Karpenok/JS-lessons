@@ -82,6 +82,16 @@ let appData = {
         })
         buttonStart.style.display = 'block';
         buttonCancel.style.display = 'none';
+        buttonStart.disabled = true;
+
+
+        expensesItems.forEach(function(item) {
+            console.log(item);
+
+        })
+
+        btnExpensesAdd.style.display = 'block';
+        btnIncomeAdd.style.display = 'block';
     },
     addExpensesBlock: function() {
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
