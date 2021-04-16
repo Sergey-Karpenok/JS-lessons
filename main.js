@@ -29,9 +29,7 @@ let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let itemIncome, cashIncome;
-
-
+// let itemIncome, cashIncome;
 const AppData = function() {
 
     this.income = {};
@@ -224,21 +222,21 @@ AppData.prototype.calcSavedMoney = function() {
     return this.budgetMonth * periodSelect.value
 };
 
-console.log('appData: ', appData);
+AppData.prototype.eventListener = function() {
 
+    buttonCancel.addEventListener('click', appData.reset.bind(appData))
+    buttonStart.disabled = true;
+    salaryAmount.addEventListener('input', function() {
+        buttonStart.disabled = salaryAmount.value.trim() === ''
+    });
 
+    buttonStart.addEventListener('click', appData.start.bind(appData));
+    btnExpensesAdd.addEventListener('click', appData.addExpensesBlock.bind(appData));
+    btnIncomeAdd.addEventListener('click', appData.addIncomeBlock.bind(appData));
+    periodSelect.addEventListener('input', function() {
+        let periodAmount = document.querySelector('.period-amount');
+        periodAmount.textContent = periodSelect.value;
+    });
+};
 
-
-buttonCancel.addEventListener('click', appData.reset)
-buttonStart.disabled = true;
-salaryAmount.addEventListener('input', function() {
-    buttonStart.disabled = salaryAmount.value.trim() === ''
-});
-
-buttonStart.addEventListener('click', appData.start.bind(appData));
-btnExpensesAdd.addEventListener('click', appData.addExpensesBlock);
-btnIncomeAdd.addEventListener('click', appData.addIncomeBlock);
-periodSelect.addEventListener('input', function() {
-    let periodAmount = document.querySelector('.period-amount');
-    periodAmount.textContent = periodSelect.value;
-});
+appData.eventListener();
