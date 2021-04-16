@@ -29,7 +29,6 @@ let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-// let itemIncome, cashIncome;
 const AppData = function() {
 
     this.income = {};
