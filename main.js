@@ -119,7 +119,7 @@ let appData = {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== "" && cashExpenses !== "") {
-                this.expenses[itemExpenses] = cashExpenses;
+                appData.expenses[itemExpenses] = cashExpenses;
             }
         })
     },
@@ -136,7 +136,7 @@ let appData = {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if (itemIncome !== "" && cashIncome !== "") {
-                this.income[itemIncome] = cashIncome;
+                appData.income[itemIncome] = cashIncome;
             }
         })
     },
@@ -146,7 +146,7 @@ let appData = {
         addExpenses.forEach(function(item) {
             item = item.trim();
             if (item !== '') {
-                this.addExpenses.push(item);
+                appData.addExpenses.push(item);
             }
         })
     },
@@ -155,7 +155,7 @@ let appData = {
         additionalIncomeItem.forEach(function(item) {
             let itemValue = item.value.trim();
             if (itemValue !== '') {
-                this.addIncome.push(itemValue);
+                appData.addIncome.push(itemValue);
             }
         })
     },
@@ -169,7 +169,7 @@ let appData = {
         incomePeriodValue.value = this.calcSavedMoney();
 
         periodSelect.addEventListener('input', function() {
-            incomePeriodValue.value = this.calcSavedMoney();
+            incomePeriodValue.value = appData.calcSavedMoney();
         });
 
     },
