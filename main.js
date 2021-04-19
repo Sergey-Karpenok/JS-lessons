@@ -104,12 +104,11 @@ class AppData {
     }
 
     getExpenses() {
-        let _this = this;
-        expensesItems.forEach(function(item) {
+        expensesItems.forEach((item) => {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== "" && cashExpenses !== "") {
-                _this.expenses[itemExpenses] = cashExpenses;
+                this.expenses[itemExpenses] = cashExpenses;
             }
         })
     }
@@ -124,33 +123,30 @@ class AppData {
     }
 
     getIncome() {
-        let _this = this;
-        incomeItems.forEach(function(item) {
+        incomeItems.forEach((item) => {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if (itemIncome !== "" && cashIncome !== "") {
-                _this.income[itemIncome] = cashIncome;
+                this.income[itemIncome] = cashIncome;
             }
         })
     }
 
     getAddExpenses() {
-        let _this = this;
         let addExpenses = additionalExpensesItem.value.split(',');
-        addExpenses.forEach(function(item) {
+        addExpenses.forEach((item) => {
             item = item.trim();
             if (item !== '') {
-                _this.addExpenses.push(item);
+                this.addExpenses.push(item);
             }
         })
     }
 
     getAddIncome() {
-        let _this = this;
-        additionalIncomeItem.forEach(function(item) {
+        additionalIncomeItem.forEach((item) => {
             let itemValue = item.value.trim();
             if (itemValue !== '') {
-                _this.addIncome.push(itemValue);
+                this.addIncome.push(itemValue);
             }
         })
     }
@@ -164,8 +160,8 @@ class AppData {
         additionalIncomeValue.value = this.addIncome.join(', ');
         targetMonthValue.value = Math.ceil(this.getTargetMonth());
         incomePeriodValue.value = this.calcSavedMoney();
-        periodSelect.addEventListener('input', function() {
-            incomePeriodValue.value = _this.calcSavedMoney();
+        periodSelect.addEventListener('input', () => {
+            incomePeriodValue.value = this.calcSavedMoney();
         });
     }
 
