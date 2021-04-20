@@ -95,6 +95,7 @@ class AppData {
                 btnIncomeAdd.style.display = 'block';
             }
         });
+
     }
 
     addExpensesBlock() {
@@ -265,7 +266,17 @@ class AppData {
     }
 
     eventListener() {
-        buttonCancel.addEventListener('click', appData.reset.bind(appData))
+        buttonCancel.addEventListener('click', appData.reset.bind(appData));
+        buttonCancel.addEventListener('click', function() {
+            depositCheck.checked = false;
+            // depositBank.style.display = 'none';
+            // depositAmount.style.display = 'none';
+            depositPercent.style.display = 'none';
+            depositBank.style.display = 'none';
+            depositAmount.style.display = 'none';
+            depositBank.value = '';
+            depositAmount.value = '';
+        });
         buttonStart.disabled = true;
         salaryAmount.addEventListener('input', function() {
             buttonStart.disabled = salaryAmount.value.trim() === ''
