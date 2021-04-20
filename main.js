@@ -49,7 +49,6 @@ class AppData {
     }
 
     start() {
-        console.log(this);
         this.budjet = salaryAmount.value;
         this.getExpenses();
         this.getAddIncome();
@@ -218,15 +217,30 @@ class AppData {
         if (this.deposit) {
             this.percentDeposit = depositPercent.value;
             this.moneyDeposit = depositAmount.value;
+        } else {
+            this.percentDeposit = 0;
         }
+
     }
 
     changePercent() {
         const valueSelect = this.value;
         if (valueSelect == 'other') {
-            // Домашнее
+            depositPercent.style.display = 'inline-block';
+            depositPercent.addEventListener('input', function() {
+                if (depositPercent.value.trim() === '') {
+                    buttonStart.disabled = true;
+                    alert('Поле процент по депозиту не может быть пустым');
+                } else if (depositPercent.value < 0 || depositPercent.value > 100) {
+                    buttonStart.disabled = true;
+                    alert('Поле процент должно быть в диапозоне от 0 до 100');
+                } else {
+                    depositPercent.value = this.value;
+                }
+            });
         } else {
             depositPercent.value = valueSelect;
+            depositPercent.style.display = 'none';
         }
     }
 
